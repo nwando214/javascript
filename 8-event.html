@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Events and Dom</title>
+</head>
+<body>
+    <h1>Mouse Events</h1>
+    <div id="js-show-bullet"></div>
+    <button id="js-shoot-btn">Shoot</button>
+    <button id="js-reload-btn">Reload</button>
+    
+    <h1>Keyboard Events</h1>
+    <input type="textInput" placeholder="Type text">
+    <div id="output"></div>
+   
+   <script>
+        const showBulletDiv = document.getElementById("js-show-bullet");
+        const shootBtn = document.getElementById("js-shoot-btn");
+        const reloadBtn = document.getElementById("js-reload-btn");
+
+        //working with mouse events
+        let maxBullet = 20;
+        showBulletDiv.innerHTML = `Bullet : ${maxBullet}`;
+        shootBtn.addEventListener('click', () => {
+            if(maxBullet > 0){
+                maxBullet--;
+                showBulletDiv.innerHTML = `Bullets : ${maxBullet}`;
+            }else {
+                alert("No bullets remaining");
+            }
+        })
+        reloadBtn.addEventListener('click', () => {
+            maxBullet = 20;
+            showBulletDiv.innerHTML = `Bullets : ${maxBullet}`
+            alert("Reload Magazine")
+        } );
+
+        //Working with Keyboard Events
+        const textInput = document.getElementById("textInput");
+        const outputDiv = document.getElementById ("output");
+
+        textInput.addEventListener('keypress', (event) => {
+           outputDiv.innerHTML = textInput.value;
+        })
+    </script>
+</body>
+</html>
